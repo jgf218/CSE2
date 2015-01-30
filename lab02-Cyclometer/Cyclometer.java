@@ -11,7 +11,6 @@
 //the combined distance
 
 // Document your program. What does MPG do? Place you comments here!
-//
 public class Cyclometer {
         // main method required for every Java program
        public static void main(String[] args) {
@@ -47,4 +46,4 @@ public class Cyclometer {
     System.out.println("Trip 2 was "+distanceTrip2+" miles");
     System.out.println("The total distance was "+totalDistance+" miles");
     }  //end of main method   
-} //end of class
+} //end of classjava Cyclometer
