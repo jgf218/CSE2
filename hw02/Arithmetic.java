@@ -28,7 +28,7 @@ double totalSockTax$;   //total Tax of socks
 double totalGlassCost$;   //total cost of glasses
 double totalGlassTax$;     // total tax of glasses
 double totalEnvolopesCost$;   //total cost of envelopes
-double totalEnvolopesTax$;    //total tax of envlopes
+double totalEnvolopesTax$;    //total tax of envlopes bought
 double totalPreTaxCost$;      // total cost pre tax
 double totalTax;  //total cost of tax
 double totalCost; //total cost of the order
