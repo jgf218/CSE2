@@ -12,35 +12,49 @@ public class Cookies {
  Scanner myScanner;
 myScanner = new Scanner( System.in );
 System.out.print( "Enter the number of people: ");
-int nPeople = nextInt();
-if(myScanner.hasNextInt())
-{
-    
+
+if(myScanner.hasNextInt()){
+    int nPeople = myScanner.nextInt();    
     System.out.print( "Enter the number of cookies you are planning to buy: ");
-    int nCookies = myScanner.nextInt();
+   
     if(myScanner.hasNextInt()){
+        int nCookies = myScanner.nextInt();
         System.out.print( "How many cookies will each person get? ");
-        int nCookiesPerPerson = myScanner.nextInt();
+        
         if(myScanner.hasNextInt()){
-        System.out.println("go" +nCookies);
+            int nCookiesPerPerson = myScanner.nextInt();
+            
+            if(nCookies/nPeople>=nCookiesPerPerson && nCookies%nPeople==0){
+                System.out.println("You have enough cookies for each person and the amount will divide evenly");
+            }
+            else if(nCookies/nPeople>=nCookiesPerPerson && nCookies%nPeople!=0){
+                System.out.println("You have enough cookies for each person but the amount will not divide evenly");
+            }
+            else{
+                int moreCookies = nPeople*nCookiesPerPerson-nCookies;
+                System.out.println("You do not have enough Cookies, you will need to buy at least " +moreCookies+ " more cookies");
+                
+                
+            }
         }
       
         else{
-            System.out.println("You did not enter an int");
+            System.out.println("You did not enter an int greater than 0");
             return;    //leaves the program, i.e.
                 //the program terminates
-}
-    }
+        }
+    }   
+
     else{
-        System.out.println("You did not enter an int");
+        System.out.println("You did not enter an int greater than 0");
         return;    //leaves the program, i.e.
                 //the program terminates
-}
- 
-    
     }
+ 
+}   
+    
 else{
-  System.out.println("You did not enter an int");
+  System.out.println("You did not enter an int greater than 0");
   return;    //leaves the program, i.e.
                 //the program terminates
 }
