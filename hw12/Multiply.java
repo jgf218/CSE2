@@ -98,7 +98,7 @@ for(int i = 0; i<1; i++){
 }
 if (height1 == width2){
 
-printMatrix(multiply(randomMatix(height2, width2), randomMatix(height1, width1)));
+printMatrix(multiply(randomMatix(height2, width2), randomMatix(height1, width1));
 }
 else{
 z--;
