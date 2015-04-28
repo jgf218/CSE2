@@ -12,7 +12,7 @@ public class ArrayInputs {
 int size= scan.nextInt();
 int array[] = new int[size];
 for(int i= 0; i < size; i++){
-    System.out.println("Please enter a positive integer");
+    System.out.println("Please enter a positive integer to fill the array");
     
 if(scan.hasNextInt() ){  
         int integer = scan.nextInt();  
@@ -36,7 +36,9 @@ if(scan.hasNextInt() ){
      }
 }
 System.out.println("The array is: ");
+System.out.print("{ ");
 for(int i= 0; i < size; i++){
-System.out.println(array[i])  ;  
+System.out.print(array[i]+ ", ")  ;  
 }
+System.out.println("}");
 }}

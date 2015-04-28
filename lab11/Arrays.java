@@ -41,7 +41,6 @@ else{
   System.out.println("sorry please enter an integer value");
   return;
     }
-
    
 
 }
@@ -73,39 +72,36 @@ public static int minval(int[] array) {
   return array[m];
 }
 public static void binarysearch(int array[], int val){
-    int Start = 0;
-    int End = 0;
-    int length = array.length;
-    int c = 1;
+   
 if (val< array[0]){
   System.out.println( "the number above  your target is "  + array[0]);
          return;
     }
-if (val> array[0]){
-  System.out.println( "the number below  your target is "  + array[array.length]);
+if (val> array[array.length - 1]){
+  System.out.println( "the number below  your target is "  + array[array.length - 1]);
          return;
     
 }
-while (true){
-    length /= 2;
-    if (array[length] == val){
+int mid = 0;
+int low =0;
+int high = array.length-1;
+while (high>=low){
+     mid = (high + low)/2;
+    if (array[mid] == val){
         System.out.println( val + " was found in the list");
         return;
     }
-    else if (array[length]< val){
-         Start = length;
-         End = array.length;
+    else if (val<array[mid]){
+         high = mid - 1;
         }
     else{
-         Start = 0;
-         End = length;
+         low = mid +1;
     }
-    length = (Start + End);
-    c++;
-    if (c>array.length/2 + 1){
-         System.out.println( "the numbers above and  below your target are "  + array[length] + " and " +array[length-1]);
+}
+   
+         System.out.println( "the numbers above and  below your target are "  + array[mid] + " and " +array[mid-1]);
          return;
-    }
+    
 } 
 }
-}
+
