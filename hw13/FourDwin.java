@@ -58,7 +58,7 @@ a = new double[3][][][];
 
 
 
-for(int i = 0; i<3;i++){
+for(int i = 0; i<3;i++){  // set up the array
     num1 =   (int) (y - (Math.random() * (y-x) ));
     a[i] = new double[num1][][];
     for(int q = 0; q<num1; q++){
@@ -71,7 +71,7 @@ for(int i = 0; i<3;i++){
     }
 }
 
-for(int i = 0; i<3;i++){
+for(int i = 0; i<3;i++){  // fill the array with random douvbles
     for(int q = 0; q<a[i].length; q++){
         for(int w = 0; w<a[i][q].length; w++){
             for(int z = 0; z<a[i][q][w].length; z++){
@@ -80,10 +80,13 @@ for(int i = 0; i<3;i++){
         }
     }
 }
-  
+printArray(a);  
 statArray(a);
+sort4DArray(a);
+sort3DArray(a);
+printArray(a);  
 }
-public static void statArray(double[][][][] a){
+public static void statArray(double[][][][] a){  // calculate the statistics of the array
 double sum = 0;
 int count = 0;
   for(int i = 0; i<3;i++){
@@ -122,49 +125,83 @@ for(int i = 0; i<3;i++){
 }
   System.out.println("}");  
 }
-public static double[][][][] sort4DArray(double [][][][] a){
-   
-    int x = 0;
-    for(int i = 1; i< 3; i++){
-            if(a[i].length < a[i-1].length){
-                double temp[][][] = new double[a[i].length][][];
-	            temp[a[i].length] = a[a[i].length];
-	            a[a[i].length] = a[a[i-1].length];
-	            a[a[i- 1].length] = temp[a[i].length];
-                i=1;
+public static void sort4DArray(double [][][][] a){  // sort the 4d array based on the lengths of the inside 3d arays
+    int L1 = a[0].length;
+    int L2 = a[1].length;
+    int L3 = a[2].length;
+    System.out.println(L1 + " " + " " + L2 + " "+ L3);
+for(int i=1; i < 3; i++) {   
+    if(a[i].length >a[i - 1].length){
+       double temp[][][] = a[i];
+       a[i] = a[i-1];
+       a[i-1]= temp;
+    }
+    else if(a[i].length  ==  a[i - 1].length){
+        
+        double min1 = 999;
+        double min2 = 999;
+            for(int q = 0; q<a[i].length; q++){
+                for(int w = 0; w<a[i][q].length; w++){
+                     for(int z = 0; z<a[i][q][w].length; z++){
+                        if (min1 > a[i][q][w][z] ) 
+                        min1 =a[i][q][w][z];
+                        
             }
-            else if (a[i].length == a[i-1].length){
-                double min1 = 100, min2 = 100;
-                
-               
-                     for(int q = 0; q<a[i].length; q++){
-                         for(int w = 0; w<a[i][q].length; w++){
-                             for(int z = 0; z<a[i][q][w].length; z++){
-                                 if (   a[i][q][w][z]< min1){
-                                     min1 = a[i][q][w][z];
-                                 }
-                              
-                            }
-                        }
-                     }
-                      for(int q = 0; q<a[i-1].length; q++){
-                         for(int w = 0; w<a[i-1][q].length; w++){
-                             for(int z = 0; z<a[i-1][q][w].length; z++){
-                                 if (   a[i-1][q][w][z]< min2){
-                                     min2 = a[i-1][q][w][z];
-                                 }
-                              
-                            }
-                        }
-                     }
-                     if(min1< min2){
-                          double temp[][][] = new double[a[i].length][][];
-	                       temp[a[i].length] = a[a[i].length];
-	                     a[i][a[i].length] = a[a[i-1].length];
-	                     a[i][a[i- 1].length] = temp[a[i].length];
-                            i=1;    
-                     }
-            }         
+        }
+    }
+         for(int q = 0; q<a[i-1].length; q++){
+                for(int w = 0; w<a[i-1][q].length; w++){
+                     for(int z = 0; z<a[i-1][q][w].length; z++){
+                        if (min2 > a[i-1][q][w][z] ) 
+                        min2 =a[i-1][q][w][z];
+                        
+            }
+        }
+    }
+     if(min2 >min1){
+       double temp[][][] = a[i];
+       a[i] = a[i-1];
+       a[i-1]= temp;
+     }
+
 }
+
+}}  
+public static void sort3DArray(double[][][][] a){ // sort the 3d arrays using selection method
+      
+     
+      int z = 0;
+      int q = 0;
+      int w = 0;
+      for(int j=0; j < 3; j++) {
+           double min = 999;
+          for(int k = 0; k<a[j].length; k++){
+                for(int l = 0; l<a[j][k].length; l++){
+                     for(int m = 0; m<a[j][k][l].length; m++){
+                        
+          
+                            for( q = 0; q<a[j].length; q++){
+                                for( w = 0; w<a[j][q].length; w++){
+                                     for( z = 0; z<a[j][q][w].length; z++){
+                                        if (min > a[j][q][w][z] ) {
+                                        min = a[j][q][w][z];
+                                        double temp =  a[j][k][l][m];
+                                        a[j][k][l][m] = min;
+                                        a[j][q][w][z]= temp;  
+                                     }
+                                        
+                                     }
+                                     
+                                }
+                            }
+                          
+                         
+                     }                    
+            }
+        }
+    }    
+ 
+  
+    
 }
 }
